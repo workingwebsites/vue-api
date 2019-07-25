@@ -1,0 +1,54 @@
+<html lang="en">
+
+<head>
+    <!-- Load Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- Load Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Load script file.  'defer' loads after body is generated -->
+    <script src="vue_lists.js" defer></script>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid #cccccc;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>North America</h1>
+    <!-- Div where Vue runs -->
+    <div id="app">
+        <h2>Table</h2> 
+        <table>
+            <!-- Header -->
+            <tr>
+                <th>Country</th>
+                <th>Capital</th>
+                <th>Population</th>
+            </tr>
+            <!-- Country List -->
+            <tr v-for="country in countries_list">
+                <td>
+                    <img v-bind:src="country.flag" alt="Flag" height="26" width="42">
+                    {{country.name}}
+                </td>
+                <td>{{country.capital}}</td>
+                <td>{{country.population}}</td>
+            </tr>
+            <!-- Error Row -->
+            <tr v-if="countries_list.length == 0">
+                <td colspan="3">
+                    No records found.
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
